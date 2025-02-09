@@ -32,10 +32,10 @@ export function ChatInterface({ type, onProgress, className }: ChatInterfaceProp
   const handleSend = () => {
     if (!input.trim()) return;
 
-    const newMessages = [
+    const newMessages: Message[] = [
       ...messages,
-      { role: 'user', content: input },
-      { role: 'assistant', content: getResponse(type, input) },
+      { role: 'user' as const, content: input },
+      { role: 'assistant' as const, content: getResponse(type, input) },
     ];
     setMessages(newMessages);
     setInput('');
